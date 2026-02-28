@@ -198,8 +198,11 @@
             <h3>The Apology </h3>
             <p>Ok so my apologies for not making this date as good as you do but I didnt know any places which were calm and away from the city . Its just you who can plan calming dates baby .I tried my best to make the date fun and also i tried to frame it such that it is an escape from your stress, pressure and piling up of deadlines. I thought a fun date would be better for giving you some relief as well . Im sorry if u dont like any checkpoint but I hope you like it Baby </p>
             <p> here's a gift : </p>
-            <button a href="https://digibouquet.vercel.app/bouquet/7d735b58-40cd-47e1-b4bf-bfa4f2fce4b0" >CLICK ME</button>
-        </div>
+<a href="https://digibouquet.vercel.app/bouquet/7d735b58-40cd-47e1-b4bf-bfa4f2fce4b0" target="_blank" style="text-decoration: none;">
+    <button type="button" style="background-color: #ffb3c6; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+        🌸 OPEN YOUR GIFT
+    </button>
+</a>        </div>
 
 </div>
 
@@ -207,6 +210,7 @@
     // --- Heart Generator ---
     function createHeart() {
         const container = document.getElementById('heartContainer');
+        if (!container) return;
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.innerHTML = '❤️';
@@ -220,33 +224,42 @@
 
     // --- Navigation Logic ---
     function showPerfect() {
+        // We use a cleaner template here to avoid ID conflicts
         document.getElementById('main-content').innerHTML = `
             <h1>Perfect! ❤️</h1>
-            <p> My King, allow me give you a walkthrough for 1 March , 2025.</p>
-            <div class="buttons">
-                <button id="planBtn" onclick="showPlan()">See the Plan</button>
+            <p>My King, allow me to give you a walkthrough for 1 March, 2026.</p>
+            
+            
+                
+                <button type="button" onclick="showPlan()" style="background-color: #ff85a2; color: white; width: 100%; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: block;">
+                    SEE THE PLAN
+                </button>
             </div>
         `;
     }
 
     function showPlan() {
-        // Hide the main card and show the roadmap
-        document.getElementById('card').style.display = 'none';
-        document.getElementById('roadmap').style.display = 'flex';
-        // Scroll to top just in case
-        window.scrollTo(0, 0);
-        // Allow the page to scroll now that the roadmap is visible
-        document.body.style.overflowY = 'auto';
+        const card = document.getElementById('card');
+        const roadmap = document.getElementById('roadmap');
+        
+        if (card && roadmap) {
+            card.style.display = 'none';
+            roadmap.style.display = 'flex';
+            window.scrollTo(0, 0);
+            document.body.style.overflowY = 'auto';
+        }
     }
 
     // --- The Running "No" Button ---
     function moveButton() {
         const btn = document.getElementById('noBtn');
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
-        btn.style.position = 'absolute';
+        if (!btn) return;
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 100);
+        btn.style.position = 'fixed'; // Fixed works better for floating over UI
         btn.style.left = x + 'px';
         btn.style.top = y + 'px';
+        btn.style.zIndex = '999';
     }
 </script>
 
